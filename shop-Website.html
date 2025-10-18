@@ -1,0 +1,1497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neighborhood Market - Your Local dairyping Destination</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #2e7d32;
+            --secondary: #ff9800;
+            --accent: #7b1fa2;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #388e3c;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+            --brown: #5d4037;
+        }
+
+        body {
+            background-color: #f5f7fb;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .logo i {
+            color: var(--accent);
+        }
+
+        .store-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 14px;
+            color: var(--gray);
+        }
+
+        .store-info i {
+            color: var(--primary);
+            margin-right: 5px;
+        }
+
+        .search-bar {
+            flex: 1;
+            max-width: 500px;
+            margin: 0 20px;
+            position: relative;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 10px 15px;
+            border: 1px solid var(--light-gray);
+            border-radius: 30px;
+            font-size: 14px;
+            outline: none;
+            transition: all 0.3s;
+        }
+
+        .search-bar input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(46, 125, 50, 0.2);
+        }
+
+        .search-bar button {
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 20px;
+        }
+
+        .header-action {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 12px;
+            color: var(--gray);
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .header-action i {
+            font-size: 20px;
+            margin-bottom: 3px;
+        }
+
+        .header-action:hover {
+            color: var(--primary);
+        }
+
+        .cart-count {
+            background: var(--secondary);
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            position: absolute;
+            top: -5px;
+            right: -5px;
+        }
+
+        .cart-wrapper {
+            position: relative;
+        }
+
+        nav {
+            background-color: var(--primary);
+            padding: 10px 0;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            z-index: 1;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .dropdown-content a {
+            color: var(--dark);
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-size: 14px;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .dropdown-content a:hover {
+            background-color: var(--light);
+            color: var(--primary);
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary), var(--brown));
+            color: white;
+            padding: 60px 0;
+            margin-bottom: 40px;
+            border-radius: 0 0 10px 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: cover;
+        }
+
+        .hero-content {
+            max-width: 600px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 25px;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background: var(--secondary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background: #e68900;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 152, 0, 0.3);
+        }
+
+        /* Local Features */
+        .local-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-size: 24px;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        .feature-card p {
+            color: var(--gray);
+            font-size: 14px;
+        }
+
+        /* Products Section */
+        .section-title {
+            font-size: 28px;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light-gray);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .view-all {
+            font-size: 14px;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-image {
+            height: 200px;
+            background-color: var(--light-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+
+        .product-info {
+            padding: 15px;
+        }
+
+        .product-category {
+            font-size: 12px;
+            color: var(--gray);
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .product-name {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            height: 40px;
+            overflow: hidden;
+        }
+
+        .product-price {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .product-rating {
+            color: #ffc107;
+            margin-bottom: 15px;
+        }
+
+        .product-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .action-btn {
+            background: none;
+            border: none;
+            color: var(--gray);
+            cursor: pointer;
+            font-size: 14px;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .action-btn:hover {
+            color: var(--primary);
+        }
+
+        /* About Section */
+        .about {
+            background: white;
+            padding: 60px 0;
+            margin: 40px 0;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            color: var(--gray);
+        }
+
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 50px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--primary);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #adb5bd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .store-hours li {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            color: #adb5bd;
+        }
+
+        .store-hours .day {
+            font-weight: 500;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+            color: #adb5bd;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 10px;
+            max-width: 900px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            animation: modalFade 0.3s;
+        }
+
+        @keyframes modalFade {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 24px;
+            color: var(--gray);
+            cursor: pointer;
+            z-index: 10;
+            background: rgba(255, 255, 255, 0.8);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .product-detail {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .product-detail-image {
+            flex: 1;
+            min-width: 300px;
+            background: var(--light-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+        }
+
+        .product-detail-image img {
+            max-width: 100%;
+            max-height: 400px;
+            object-fit: contain;
+        }
+
+        .product-detail-info {
+            flex: 1;
+            min-width: 300px;
+            padding: 30px;
+        }
+
+        .product-detail-category {
+            font-size: 14px;
+            color: var(--gray);
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .product-detail-name {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .product-detail-price {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .product-detail-rating {
+            color: #ffc107;
+            margin-bottom: 20px;
+        }
+
+        .product-detail-description {
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+
+        .product-options {
+            margin-bottom: 25px;
+        }
+
+        .option-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .option-buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .option-btn {
+            padding: 8px 15px;
+            border: 1px solid var(--light-gray);
+            background: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .option-btn.active {
+            border-color: var(--primary);
+            background: var(--primary);
+            color: white;
+        }
+
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .quantity-btn {
+            width: 36px;
+            height: 36px;
+            border: 1px solid var(--light-gray);
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .quantity-value {
+            font-size: 18px;
+            font-weight: 600;
+            min-width: 30px;
+            text-align: center;
+        }
+
+        .detail-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn-add-to-cart {
+            flex: 2;
+            background: var(--primary);
+        }
+
+        .btn-wishlist {
+            flex: 1;
+            background: white;
+            color: var(--dark);
+            border: 1px solid var(--light-gray);
+        }
+
+        .btn-wishlist:hover {
+            background: var(--light);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .about-image {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-top {
+                flex-wrap: wrap;
+            }
+            
+            .store-info {
+                order: 3;
+                width: 100%;
+                margin-top: 15px;
+                flex-direction: row;
+                justify-content: space-around;
+            }
+            
+            .search-bar {
+                order: 2;
+                max-width: 100%;
+                margin: 15px 0 0;
+            }
+            
+            .nav-links {
+                overflow-x: auto;
+                padding-bottom: 5px;
+            }
+            
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .product-detail {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-top">
+                <a href="#" class="logo">
+                    <i class="fas fa-store"></i>
+                    Neighborhood Market
+                </a>
+                
+                <div class="store-info">
+                    <div><i class="fas fa-map-marker-alt"></i> Okhla Vihar Main Street, Delhi</div>
+                    <div><i class="fas fa-phone"></i> +91 124567890</div>
+                </div>
+                
+                <div class="search-bar">
+                    <input type="text" placeholder="Search for products...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+                
+                <div class="header-actions">
+                    <div class="header-action">
+                        <i class="fas fa-user"></i>
+                        <span>Account</span>
+                    </div>
+                    
+                    <div class="header-action">
+                        <i class="fas fa-heart"></i>
+                        <span>Wishlist</span>
+                    </div>
+                    
+                    <div class="header-action cart-wrapper">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span>Cart</span>
+                        <div class="cart-count">2</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <nav>
+            <div class="container">
+                <ul class="nav-links">
+                    <li class="dropdown">
+                        <a href="#">All Departments <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-content">
+                            <a href="#">Fresh Produce</a>
+                            <a href="#"> & Eggs</a>
+                            <a href="#">Meat & Seafood</a>
+                            <a href="#">Bakery</a>
+                            <a href="#">Frozen Foods</a>
+                            <a href="#">Household Essentials</a>
+                        </div>
+                    </li>
+                    <li><a href="#">Weekly Specials</a></li>
+                    <li><a href="#">Local Products</a></li>
+                    <li><a href="#">Organic Section</a></li>
+                    <li><a href="#">Butcher Shop</a></li>
+                    <li><a href="#">Deli</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Fresh & Local Groceries</h1>
+                <p>Support local farmers and producers while enjoying the freshest products in town. Quality you can taste, service you can trust.</p>
+                <a href="#" class="btn">Shop Weekly Specials</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Local Features -->
+    <section class="container">
+        <div class="local-features">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-truck"></i>
+                </div>
+                <h3>Free Local Delivery</h3>
+                <p>Free delivery on orders over $35 within 5 miles of our store</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-leaf"></i>
+                </div>
+                <h3>Local & Organic</h3>
+                <p>We source from local farms and producers whenever possible</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-award"></i>
+                </div>
+                <h3>Quality Guarantee</h3>
+                <p>Not satisfied? We'll refund or replace your purchase, no questions asked</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-history"></i>
+                </div>
+                <h3>Fresh Daily</h3>
+                <p>Our bakery and produce sections are stocked with fresh items daily</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="container">
+        <h2 class="section-title">
+            Weekly Specials
+            <a href="#" class="view-all">View All <i class="fas fa-chevron-right"></i></a>
+        </h2>
+        
+        <div class="products-grid">
+            <!-- Product 1 -->
+            <div class="product-card" data-id="1">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Fresh Vegetables">
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Produce</div>
+                    <h3 class="product-name">Fresh Organic Vegetable Basket</h3>
+                    <div class="product-price">$18.99</div>
+                    <div class="product-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <span>(42)</span>
+                    </div>
+                    <div class="product-actions">
+                        <button class="action-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                        <button class="action-btn"><i class="far fa-heart"></i> Wishlist</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product 2 -->
+            <div class="product-card" data-id="2">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Fresh Bread">
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Bakery</div>
+                    <h3 class="product-name">Artisan Sourdough Bread</h3>
+                    <div class="product-price">$5.99</div>
+                    <div class="product-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <span>(36)</span>
+                    </div>
+                    <div class="product-actions">
+                        <button class="action-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                        <button class="action-btn"><i class="far fa-heart"></i> Wishlist</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product 3 -->
+            <div class="product-card" data-id="3">
+                <div class="product-image">
+                    <img src="https://png.pngtree.com/thumb_back/fh260/background/20230610/pngtree-dairy-products-in-bottles-and-bowls-image_2950735.jpg" alt="Dairy Products">
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Dairy</div>
+                    <h3 class="product-name">Local Farm Fresh Milk & Eggs</h3>
+                    <div class="product-price">$7.49</div>
+                    <div class="product-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <span>(58)</span>
+                    </div>
+                    <div class="product-actions">
+                        <button class="action-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                        <button class="action-btn"><i class="far fa-heart"></i> Wishlist</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product 4 -->
+            <div class="product-card" data-id="4">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1603532648955-039310d9ed75?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Meat">
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Butcher</div>
+                    <h3 class="product-name">Grass-Fed Beef Steak Selection</h3>
+                    <div class="product-price">$24.99</div>
+                    <div class="product-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <span>(29)</span>
+                    </div>
+                    <div class="product-actions">
+                        <button class="action-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                        <button class="action-btn"><i class="far fa-heart"></i> Wishlist</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Categories -->
+    <section class="container">
+        <h2 class="section-title">
+            Popular Categories
+            <a href="#" class="view-all">Browse All <i class="fas fa-chevron-right"></i></a>
+        </h2>
+        
+        <div class="products-grid">
+            <!-- Product 5 -->
+            <div class="product-card" data-id="5">
+                <div class="product-image">
+                    <img src="https://c.ndtvimg.com/2023-01/3qou6n2o_cheese_625x300_25_January_23.jpg?im=FeatureCrop,algorithm=dnn,width=545,height=307" alt="Cheese">
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Deli</div>
+                    <h3 class="product-name">Assorted Artisan Cheese Platter</h3>
+                    <div class="product-price">$16.99</div>
+                    <div class="product-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <span>(31)</span>
+                    </div>
+                    <div class="product-actions">
+                        <button class="action-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                        <button class="action-btn"><i class="far fa-heart"></i> Wishlist</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product 6 -->
+            <div class="product-card" data-id="6">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Fruits">
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Produce</div>
+                    <h3 class="product-name">Seasonal Fresh Fruit Basket</h3>
+                    <div class="product-price">$22.99</div>
+                    <div class="product-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                        <span>(47)</span>
+                    </div>
+                    <div class="product-actions">
+                        <button class="action-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                        <button class="action-btn"><i class="far fa-heart"></i> Wishlist</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product 7 -->
+            <div class="product-card" data-id="7">
+                <div class="product-image">
+                    <img src="https://t3.ftcdn.net/jpg/04/81/35/86/360_F_481358641_4uyOioGYFnr84S6nC5u1XxTGQa8qN2ui.jpg" alt="Coffee">
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Pantry</div>
+                    <h3 class="product-name">Local Roaster Coffee Beans</h3>
+                    <div class="product-price">$12.99</div>
+                    <div class="product-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <span>(63)</span>
+                    </div>
+                    <div class="product-actions">
+                        <button class="action-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                        <button class="action-btn"><i class="far fa-heart"></i> Wishlist</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Product 8 -->
+            <div class="product-card" data-id="8">
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1603532648955-039310d9ed75?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Pasta">
+                </div>
+                <div class="product-info">
+                    <div class="product-category">Pantry</div>
+                    <h3 class="product-name">Fresh Pasta & Sauce Bundle</h3>
+                    <div class="product-price">$14.99</div>
+                    <div class="product-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <span>(25)</span>
+                    </div>
+                    <div class="product-actions">
+                        <button class="action-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                        <button class="action-btn"><i class="far fa-heart"></i> Wishlist</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Our Local Story</h2>
+                    <p>Neighborhood Market has been serving the Localville community since 1985. What started as a small family-owned grocery store has grown into a community hub where neighbors meet and local producers showcase their best products.</p>
+                    <p>We're committed to supporting our local economy by sourcing over 60% of our products from within 50 miles of our store. From farm-fresh produce to artisan baked goods, we take pride in offering the highest quality items while keeping our carbon footprint small.</p>
+                    <p>Stop by and experience the difference that shopping local makes. Our friendly staff is always here to help you find exactly what you need or make suggestions for your next meal.</p>
+                    <a href="#" class="btn">Visit Our Store</a>
+                </div>
+                <div class="about-image">
+                    <img src="https://plus.unsplash.com/premium_photo-1741657668184-38dd981bc339?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2071" alt="Our Store">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Shop</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Weekly Specials</a></li>
+                        <li><a href="#">Local Products</a></li>
+                        <li><a href="#">Organic Section</a></li>
+                        <li><a href="#">Butcher Shop</a></li>
+                        <li><a href="#">Bakery</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Information</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Delivery Information</a></li>
+                        <li><a href="#">Returns Policy</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Customer Service</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">My Account</a></li>
+                        <li><a href="#">Order History</a></li>
+                        <li><a href="#">Wishlist</a></li>
+                        <li><a href="#">Newsletter</a></li>
+                        <li><a href="#">Help Center</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Store Information</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i>Okhla Vihar, Main Street, Delhi</li>
+                        <li><i class="fas fa-phone"></i>+91 124567890</li>
+                        <li><i class="fas fa-envelope"></i> info@hamza.coder.com</li>
+                    </ul>
+                    
+                    <h4>Store Hours</h4>
+                    <ul class="footer-links store-hours">
+                        <li><span class="day">Mon-Fri:</span> <span>7am - 9pm</span></li>
+                        <li><span class="day">Saturday:</span> <span>7am - 10pm</span></li>
+                        <li><span class="day">Sunday:</span> <span>8am - 8pm</span></li>
+                    </ul>
+                    
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2023 Neighborhood Market. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Product Detail Modal -->
+    <div class="modal" id="productModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="product-detail">
+                <div class="product-detail-image">
+                    <img id="modalImage" src="" alt="Product Image">
+                </div>
+                <div class="product-detail-info">
+                    <div class="product-detail-category" id="modalCategory">Produce</div>
+                    <h1 class="product-detail-name" id="modalName">Product Name</h1>
+                    <div class="product-detail-price" id="modalPrice">$0.00</div>
+                    <div class="product-detail-rating" id="modalRating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <span>(0)</span>
+                    </div>
+                    <p class="product-detail-description" id="modalDescription">
+                        Product description will appear here. This is a detailed description of the product features, specifications, and benefits.
+                    </p>
+                    
+                    <div class="product-options">
+                        <div class="option-title">Size:</div>
+                        <div class="option-buttons">
+                            <button class="option-btn active">Small</button>
+                            <button class="option-btn">Medium</button>
+                            <button class="option-btn">Large</button>
+                        </div>
+                    </div>
+                    
+                    <div class="quantity-selector">
+                        <div class="option-title">Quantity:</div>
+                        <button class="quantity-btn minus">-</button>
+                        <div class="quantity-value">1</div>
+                        <button class="quantity-btn plus">+</button>
+                    </div>
+                    
+                    <div class="detail-actions">
+                        <button class="btn btn-add-to-cart"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                        <button class="btn btn-wishlist"><i class="far fa-heart"></i> Wishlist</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Product data
+        const products = {
+            1: {
+                name: "Fresh Organic Vegetable Basket",
+                category: "Produce",
+                price: "$18.99",
+                rating: 4.5,
+                reviews: 42,
+                image: "https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                description: "A carefully selected assortment of fresh, organic vegetables sourced from local farms. This basket includes seasonal favorites like tomatoes, cucumbers, bell peppers, carrots, and leafy greens. Perfect for salads, roasting, or as a healthy snack. All produce is certified organic and harvested within 24 hours of delivery."
+            },
+            2: {
+                name: "Artisan Sourdough Bread",
+                category: "Bakery",
+                price: "$5.99",
+                rating: 4,
+                reviews: 36,
+                image: "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                description: "Handcrafted sourdough bread made using traditional methods and natural fermentation. Our bakers use a 50-year-old starter culture to create this flavorful, crusty loaf with a soft, airy interior. Perfect for sandwiches, toast, or simply enjoyed with butter. Baked fresh daily in our in-store bakery."
+            },
+            3: {
+                name: "Local Farm Fresh Milk & Eggs",
+                category: "Dairy",
+                price: "$7.49",
+                rating: 5,
+                reviews: 58,
+                image: "https://images.unsplash.com/photo-1566474591190-88ddec1b7445?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                description: "Farm-fresh milk and eggs from Happy Valley Farms, located just 15 miles from our store. The milk is non-homogenized and comes from pasture-raised cows, while the eggs are from free-range chickens. You can taste the difference in quality and freshness. Delivered to our store within hours of collection."
+            },
+            4: {
+                name: "Grass-Fed Beef Steak Selection",
+                category: "Butcher",
+                price: "$24.99",
+                rating: 4.5,
+                reviews: 29,
+                image: "https://images.unsplash.com/photo-1603532648955-039310d9ed75?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                description: "Premium selection of grass-fed beef steaks, including ribeye, sirloin, and filet mignon cuts. Our beef comes from local ranchers who practice sustainable farming methods. The result is tender, flavorful meat with excellent marbling. Expertly cut by our in-store butchers and packaged for freshness."
+            },
+            5: {
+                name: "Assorted Artisan Cheese Platter",
+                category: "Deli",
+                price: "$16.99",
+                rating: 4,
+                reviews: 31,
+                image: "https://images.unsplash.com/photo-1611258623152-1688c9ee5c76?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                description: "A carefully curated selection of artisan cheeses from local creameries. This platter includes a variety of textures and flavors - from soft brie to aged cheddar and creamy blue cheese. Perfect for entertaining, wine pairings, or as a special treat. Served with our recommendations for complementary crackers and fruits."
+            },
+            6: {
+                name: "Seasonal Fresh Fruit Basket",
+                category: "Produce",
+                price: "$22.99",
+                rating: 4.5,
+                reviews: 47,
+                image: "https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                description: "A beautiful assortment of seasonal fruits selected at peak ripeness. This basket includes a variety of colors, textures, and flavors - from sweet berries and stone fruits to crisp apples and tropical favorites. Perfect for healthy snacking, fruit salads, or as a colorful centerpiece. Sourced from local orchards when in season."
+            },
+            7: {
+                name: "Local Roaster Coffee Beans",
+                category: "Pantry",
+                price: "$12.99",
+                rating: 5,
+                reviews: 63,
+                image: "https://images.unsplash.com/photo-1627667928346-93e9c310c1bf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                description: "Freshly roasted coffee beans from City Roasters, our local coffee experts. This medium roast blend features notes of chocolate, caramel, and citrus with a smooth finish. Beans are roasted in small batches to ensure maximum freshness and flavor. Available in whole bean or ground to your preference."
+            },
+            8: {
+                name: "Fresh Pasta & Sauce Bundle",
+                category: "Pantry",
+                price: "$14.99",
+                rating: 4,
+                reviews: 25,
+                image: "https://images.unsplash.com/photo-1603532648955-039310d9ed75?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+                description: "Everything you need for a delicious homemade pasta dinner. This bundle includes fresh fettuccine pasta made in our kitchen today, paired with our signature marinara sauce simmered with herbs and ripe tomatoes. Add your favorite protein or vegetables for a complete meal. Ready in just 10 minutes."
+            }
+        };
+
+        // DOM Elements
+        const modal = document.getElementById('productModal');
+        const closeModal = document.querySelector('.close-modal');
+        const modalImage = document.getElementById('modalImage');
+        const modalCategory = document.getElementById('modalCategory');
+        const modalName = document.getElementById('modalName');
+        const modalPrice = document.getElementById('modalPrice');
+        const modalRating = document.getElementById('modalRating');
+        const modalDescription = document.getElementById('modalDescription');
+        const productCards = document.querySelectorAll('.product-card');
+        const optionButtons = document.querySelectorAll('.option-btn');
+        const minusBtn = document.querySelector('.quantity-btn.minus');
+        const plusBtn = document.querySelector('.quantity-btn.plus');
+        const quantityValue = document.querySelector('.quantity-value');
+        const addToCartBtn = document.querySelector('.btn-add-to-cart');
+        const wishlistBtn = document.querySelector('.btn-wishlist');
+        const cartCount = document.querySelector('.cart-count');
+
+        // Open product modal when clicking on a product card
+        productCards.forEach(card => {
+            card.addEventListener('click', (e) => {
+                // Don't open modal if clicking on action buttons
+                if (e.target.closest('.action-btn')) {
+                    return;
+                }
+                
+                const productId = card.getAttribute('data-id');
+                const product = products[productId];
+                
+                if (product) {
+                    modalImage.src = product.image;
+                    modalCategory.textContent = product.category;
+                    modalName.textContent = product.name;
+                    modalPrice.textContent = product.price;
+                    modalDescription.textContent = product.description;
+                    
+                    // Update rating stars
+                    let ratingHTML = '';
+                    const fullStars = Math.floor(product.rating);
+                    const hasHalfStar = product.rating % 1 !== 0;
+                    
+                    for (let i = 1; i <= 5; i++) {
+                        if (i <= fullStars) {
+                            ratingHTML += '<i class="fas fa-star"></i>';
+                        } else if (i === fullStars + 1 && hasHalfStar) {
+                            ratingHTML += '<i class="fas fa-star-half-alt"></i>';
+                        } else {
+                            ratingHTML += '<i class="far fa-star"></i>';
+                        }
+                    }
+                    
+                    ratingHTML += ` <span>(${product.reviews})</span>`;
+                    modalRating.innerHTML = ratingHTML;
+                    
+                    modal.style.display = 'flex';
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+        });
+
+        // Close modal
+        closeModal.addEventListener('click', () => {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+
+        // Close modal when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Option buttons selection
+        optionButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const parent = button.parentElement;
+                const siblings = parent.querySelectorAll('.option-btn');
+                
+                siblings.forEach(sib => sib.classList.remove('active'));
+                button.classList.add('active');
+            });
+        });
+
+        // Quantity selector
+        let quantity = 1;
+        
+        minusBtn.addEventListener('click', () => {
+            if (quantity > 1) {
+                quantity--;
+                quantityValue.textContent = quantity;
+            }
+        });
+        
+        plusBtn.addEventListener('click', () => {
+            quantity++;
+            quantityValue.textContent = quantity;
+        });
+
+        // Add to cart functionality
+        addToCartBtn.addEventListener('click', () => {
+            const currentCount = parseInt(cartCount.textContent);
+            cartCount.textContent = currentCount + quantity;
+            
+            // Show confirmation
+            const originalText = addToCartBtn.innerHTML;
+            addToCartBtn.innerHTML = '<i class="fas fa-check"></i> Added to Cart';
+            addToCartBtn.style.background = 'var(--success)';
+            
+            setTimeout(() => {
+                addToCartBtn.innerHTML = originalText;
+                addToCartBtn.style.background = '';
+            }, 2000);
+            
+            // Reset quantity
+            quantity = 1;
+            quantityValue.textContent = quantity;
+        });
+
+        // Wishlist functionality
+        wishlistBtn.addEventListener('click', () => {
+            const isActive = wishlistBtn.classList.contains('active');
+            
+            if (isActive) {
+                wishlistBtn.classList.remove('active');
+                wishlistBtn.innerHTML = '<i class="far fa-heart"></i> Wishlist';
+            } else {
+                wishlistBtn.classList.add('active');
+                wishlistBtn.innerHTML = '<i class="fas fa-heart"></i> In Wishlist';
+            }
+        });
+
+        // Add to cart from product cards
+        document.querySelectorAll('.action-btn').forEach(btn => {
+            if (btn.innerHTML.includes('Add to Cart')) {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation(); // Prevent opening product modal
+                    const currentCount = parseInt(cartCount.textContent);
+                    cartCount.textContent = currentCount + 1;
+                    
+                    // Show confirmation on button
+                    const originalText = btn.innerHTML;
+                    btn.innerHTML = '<i class="fas fa-check"></i> Added';
+                    btn.style.color = 'var(--success)';
+                    
+                    setTimeout(() => {
+                        btn.innerHTML = originalText;
+                        btn.style.color = '';
+                    }, 1500);
+                });
+            }
+            
+            if (btn.innerHTML.includes('Wishlist')) {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation(); // Prevent opening product modal
+                    const isActive = btn.classList.contains('active');
+                    
+                    if (isActive) {
+                        btn.classList.remove('active');
+                        btn.innerHTML = '<i class="far fa-heart"></i> Wishlist';
+                    } else {
+                        btn.classList.add('active');
+                        btn.innerHTML = '<i class="fas fa-heart"></i> In Wishlist';
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

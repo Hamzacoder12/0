@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hamza - Web Designer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6C63FF;
+            --secondary: #4A44C6;
+            --accent: #FF6584;
+            --dark: #2A2D3E;
+            --light: #F7F9FC;
+            --gray: #8C8EA4;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transform-style: preserve-3d;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            transform: translateZ(20px);
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 150px 0 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            top: -250px;
+            right: -250px;
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--accent), #FF8E9E);
+            bottom: -150px;
+            left: -150px;
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+            transform: translateZ(30px);
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            color: var(--gray);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(108, 99, 255, 0.3);
+            transform: translateZ(10px);
+        }
+
+        .btn:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px) translateZ(15px);
+            box-shadow: 0 8px 20px rgba(108, 99, 255, 0.4);
+        }
+
+        /* Skills Section */
+        .skills {
+            padding: 100px 0;
+            background-color: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .skills-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .skill-card {
+            background-color: var(--light);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            width: 200px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            transform-style: preserve-3d;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px) rotateX(5deg);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .skill-card i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .skill-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 100px 0;
+            background-color: var(--light);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: white;
+            border-radius: 15px;
+            padding: 40px 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+            transform-style: preserve-3d;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px) rotateY(5deg);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 25px;
+            background-color: var(--light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 2.2rem;
+            transition: var(--transition);
+        }
+
+        .service-card:hover .service-icon {
+            background-color: var(--primary);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+
+        .service-card p {
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+        /* Work Section */
+        .work {
+            padding: 100px 0;
+            background-color: white;
+        }
+
+        .work-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .work-card {
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            transform-style: preserve-3d;
+        }
+
+        .work-card:hover {
+            transform: translateY(-10px) rotateY(5deg);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .work-img {
+            height: 200px;
+            background-color: #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--primary);
+        }
+
+        .work-content {
+            padding: 20px;
+        }
+
+        .work-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .work-content p {
+            color: var(--gray);
+            margin-bottom: 15px;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 100px 0;
+            background-color: var(--light);
+        }
+
+        .contact-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 50px;
+        }
+
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+
+        .contact-info p {
+            margin-bottom: 30px;
+            color: var(--gray);
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .contact-item i {
+            width: 40px;
+            height: 40px;
+            background-color: var(--light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background-color: var(--light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(108, 99, 255, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal {
+            background-color: white;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 700px;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 40px;
+            position: relative;
+            transform: translateY(50px);
+            transition: var(--transition);
+        }
+
+        .modal-overlay.active .modal {
+            transform: translateY(0);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--gray);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .close-modal:hover {
+            color: var(--accent);
+        }
+
+        .modal-header {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .modal-header h2 {
+            font-size: 2rem;
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+
+        .modal-header p {
+            color: var(--gray);
+        }
+
+        .service-options {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .service-option {
+            flex: 1;
+            min-width: 250px;
+            background-color: var(--light);
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .service-option:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-option h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .delivery-time {
+            color: var(--gray);
+            margin-bottom: 15px;
+        }
+
+        .features {
+            list-style: none;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .features li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .features li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .modal-footer {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .skills-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .contact-container {
+                flex-direction: column;
+            }
+
+            .service-options {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">Hamza<span>.</span></a>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#work">My Work</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Hi, I'm <span>Hamza</span> <br>Web Designer</h1>
+            <p>I make beautiful and fast websites for small businesses.</p>
+            <a href="#work" class="btn">View My Work</a>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills" id="skills">
+        <div class="container">
+            <div class="section-title">
+                <h2>My Skills</h2>
+            </div>
+            <div class="skills-container">
+                <div class="skill-card">
+                    <i class="fab fa-html5"></i>
+                    <h3>HTML</h3>
+                    <p>Semantic, Accessible Markup</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fab fa-css3-alt"></i>
+                    <h3>CSS</h3>
+                    <p>Modern Layouts & Animations</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fab fa-js"></i>
+                    <h3>JavaScript</h3>
+                    <p>Interactive Web Experiences</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>My Services</h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-card" data-service="school">
+                    <div class="service-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>School/College Project Websites</h3>
+                    <p>Professional websites for academic projects with clean design and proper documentation.</p>
+                </div>
+                <div class="service-card" data-service="business">
+                    <div class="service-icon">
+                        <i class="fas fa-store"></i>
+                    </div>
+                    <h3>Small Business Landing Pages</h3>
+                    <p>Effective landing pages that convert visitors into customers for your small business.</p>
+                </div>
+                <div class="service-card" data-service="portfolio">
+                    <div class="service-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h3>Personal Portfolio Websites</h3>
+                    <p>Showcase your skills, projects, and achievements with a stunning personal portfolio.</p>
+                </div>
+                <div class="service-card" data-service="fixes">
+                    <div class="service-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>HTML/CSS Fixes</h3>
+                    <p>Debugging and fixing issues in your existing HTML/CSS code to improve functionality.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Section -->
+    <section class="work" id="work">
+        <div class="container">
+            <div class="section-title">
+                <h2>My Work</h2>
+            </div>
+                <div class="work-card">
+                    <div class="work-img" style="background-color: #E8F4FF;">
+                        <i class="fas fa-store"></i>
+                    </div>
+                    <div class="work-content">
+                        <h3>Local Shop Website</h3>
+                        <p>A vibrant one-page website for a local shop (bakery/juice shop) with an attractive menu display.</p>
+                        <a href="shop-Website.html" target="_blank" class="btn">View Website</a>
+                    </div>
+                </div>
+                <div class="work-card">
+                    <div class="work-img" style="background-color: #E8FFE8;">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <div class="work-content">
+                        <h3>E-commerce Website</h3>
+                        <p>A complete e-commerce solution with product listings, shopping cart, and secure checkout.</p>
+                        <a href="ecommerce-Website.html" target="_blank" class="btn">View Website</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Me</h2>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Let's Work Together</h3>
+                    <p>I'm available for freelance work. Get in touch with me and let's discuss your project.</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>hamzagrphix@gmail.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-instagram"></i>
+                            <span>@hamza.coder</span>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/hamza.coder/"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/in/hamza-ali-59664538a/"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://github.com/Hamzacoder12"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" placeholder="John Doe">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Your Email</label>
+                            <input type="email" id="email" placeholder="john@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Your Message</label>
+                            <textarea id="message" rows="5" placeholder="Tell me about your project..."></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Hamza - Web Designer. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Service Modals -->
+    <div class="modal-overlay" id="service-modal">
+        <div class="modal">
+            <button class="close-modal">&times;</button>
+            <div class="modal-header">
+                <h2 id="modal-title">Service Details</h2>
+                <p id="modal-description">Choose the package that fits your needs</p>
+            </div>
+            <div class="service-options" id="service-options">
+                <!-- Service options will be dynamically inserted here -->
+            </div>
+            <div class="modal-footer">
+                <a href="#contact" class="btn">Contact Me</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Service data
+        const services = {
+            school: {
+                title: "School/College Project Websites",
+                description: "Professional websites for academic projects with clean design and proper documentation.",
+                options: [
+                    {
+                        name: "Basic Package",
+                        price: "₹1,000 - ₹2,000",
+                        delivery: "2-3 days",
+                        features: [
+                            "4-5 pages website",
+                            "Responsive design",
+                            "Basic contact form",
+                            "Standard documentation"
+                        ]
+                    },
+                    {
+                        name: "Advanced Package",
+                        price: "₹2,000 - ₹3,000",
+                        delivery: "3-4 days",
+                        features: [
+                            "5-6 pages website",
+                            "Enhanced responsive design",
+                            "Advanced contact form with validation",
+                            "Detailed documentation",
+                            "Basic animations"
+                        ]
+                    }
+                ]
+            },
+            business: {
+                title: "Small Business Landing Pages",
+                description: "Effective landing pages that convert visitors into customers for your small business.",
+                options: [
+                    {
+                        name: "Standard Landing Page",
+                        price: "₹500",
+                        delivery: "1-2 days",
+                        features: [
+                            "Single page design",
+                            "Mobile responsive",
+                            "Contact form",
+                            "Social media integration",
+                            "Basic SEO optimization"
+                        ]
+                    }
+                ]
+            },
+            portfolio: {
+                title: "Personal Portfolio Websites",
+                description: "Showcase your skills, projects, and achievements with a stunning personal portfolio.",
+                options: [
+                    {
+                        name: "Basic Portfolio",
+                        price: "₹1,000 - ₹1,500",
+                        delivery: "2-3 days",
+                        features: [
+                            "3-4 pages",
+                            "Responsive design",
+                            "Project showcase",
+                            "Contact form",
+                            "Basic animations"
+                        ]
+                    },
+                    {
+                        name: "Advanced Portfolio",
+                        price: "₹1,500 - ₹2,500",
+                        delivery: "3-4 days",
+                        features: [
+                            "5-6 pages",
+                            "Enhanced responsive design",
+                            "Project showcase with filtering",
+                            "Contact form with validation",
+                            "Advanced animations",
+                            "Blog section"
+                        ]
+                    }
+                ]
+            },
+            fixes: {
+                title: "HTML/CSS Fixes",
+                description: "Debugging and fixing issues in your existing HTML/CSS code to improve functionality.",
+                options: [
+                    {
+                        name: "Per Fix",
+                        price: "₹200",
+                        delivery: "4 hours",
+                        features: [
+                            "Bug identification and fixing",
+                            "Cross-browser compatibility",
+                            "Responsive design fixes",
+                            "Performance optimization",
+                            "Code review and suggestions"
+                        ]
+                    }
+                ]
+            }
+        };
+
+        // Modal elements
+        const modalOverlay = document.getElementById('service-modal');
+        const modalTitle = document.getElementById('modal-title');
+        const modalDescription = document.getElementById('modal-description');
+        const serviceOptions = document.getElementById('service-options');
+        const closeModal = document.querySelector('.close-modal');
+
+        // Open modal when service card is clicked
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const serviceType = this.getAttribute('data-service');
+                openServiceModal(serviceType);
+            });
+        });
+
+        // Open modal function
+        function openServiceModal(serviceType) {
+            const service = services[serviceType];
+            
+            if (!service) return;
+            
+            modalTitle.textContent = service.title;
+            modalDescription.textContent = service.description;
+            
+            // Clear previous options
+            serviceOptions.innerHTML = '';
+            
+            // Add new options
+            service.options.forEach(option => {
+                const optionElement = document.createElement('div');
+                optionElement.className = 'service-option';
+                
+                optionElement.innerHTML = `
+                    <h3>${option.name}</h3>
+                    <div class="price">${option.price}</div>
+                    <div class="delivery-time">Delivery: ${option.delivery}</div>
+                    <ul class="features">
+                        ${option.features.map(feature => `<li>${feature}</li>`).join('')}
+                    </ul>
+                `;
+                
+                serviceOptions.appendChild(optionElement);
+            });
+            
+            // Show modal
+            modalOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close modal
+        closeModal.addEventListener('click', closeServiceModal);
+        modalOverlay.addEventListener('click', function(e) {
+            if (e.target === modalOverlay) {
+                closeServiceModal();
+            }
+        });
+
+        function closeServiceModal() {
+            modalOverlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.1)';
+            }
+        });
+    </script>
+</body>
+</html>
