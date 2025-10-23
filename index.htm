@@ -47,6 +47,7 @@
             top: 0;
             z-index: 1000;
             transform-style: preserve-3d;
+            transition: var(--transition);
         }
 
         nav {
@@ -102,6 +103,15 @@
 
         .nav-links a:hover::after {
             width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark);
         }
 
         /* Hero Section */
@@ -322,6 +332,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
+            justify-items: center;
         }
 
         .work-card {
@@ -331,6 +342,8 @@
             box-shadow: var(--shadow);
             transition: var(--transition);
             transform-style: preserve-3d;
+            max-width: 350px;
+            width: 100%;
         }
 
         .work-card:hover {
@@ -614,10 +627,56 @@
             margin-top: 30px;
         }
 
+        /* Notification */
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--primary);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: var(--transition);
+            z-index: 3000;
+        }
+
+        .notification.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
             .nav-links {
-                display: none;
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                box-shadow: var(--shadow);
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: var(--transition);
+                z-index: 999;
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+            }
+
+            .nav-links li {
+                margin: 15px 0;
             }
 
             .hero h1 {
@@ -645,7 +704,10 @@
         <div class="container">
             <nav>
                 <a href="#" class="logo">Hamza<span>.</span></a>
-                <ul class="nav-links">
+                <button class="hamburger" id="hamburger">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul class="nav-links" id="nav-links">
                     <li><a href="#home">Home</a></li>
                     <li><a href="#skills">Skills</a></li>
                     <li><a href="#services">Services</a></li>
@@ -736,6 +798,7 @@
             <div class="section-title">
                 <h2>My Work</h2>
             </div>
+            <div class="work-grid">
                 <div class="work-card">
                     <div class="work-img" style="background-color: #E8F4FF;">
                         <i class="fas fa-store"></i>
@@ -754,6 +817,16 @@
                         <h3>E-commerce Website</h3>
                         <p>A complete e-commerce solution with product listings, shopping cart, and secure checkout.</p>
                         <a href="ecommerce-Website.html" target="_blank" class="btn">View Website</a>
+                    </div>
+                </div>
+                <div class="work-card">
+                    <div class="work-img" style="background-color: #f5dcff;">
+                        <i class="fas fa-desktop"></i>
+                    </div>
+                    <div class="work-content">
+                        <h3>Tech Computers Website</h3>
+                        <p>A vibrant Website for a IT Solutions purpose</p>
+                        <a href="computer_website.htm" target="_blank" class="btn">View Website</a>
                     </div>
                 </div>
             </div>
@@ -787,18 +860,18 @@
                     </div>
                 </div>
                 <div class="contact-form">
-                    <form>
+                    <form id="contact-form">
                         <div class="form-group">
                             <label for="name">Your Name</label>
-                            <input type="text" id="name" placeholder="John Doe">
+                            <input type="text" id="name" placeholder="John Doe" required>
                         </div>
                         <div class="form-group">
                             <label for="email">Your Email</label>
-                            <input type="email" id="email" placeholder="john@example.com">
+                            <input type="email" id="email" placeholder="john@example.com" required>
                         </div>
                         <div class="form-group">
                             <label for="message">Your Message</label>
-                            <textarea id="message" rows="5" placeholder="Tell me about your project..."></textarea>
+                            <textarea id="message" rows="5" placeholder="Tell me about your project..." required></textarea>
                         </div>
                         <button type="submit" class="btn">Send Message</button>
                     </form>
@@ -829,6 +902,11 @@
                 <a href="#contact" class="btn">Contact Me</a>
             </div>
         </div>
+    </div>
+
+    <!-- Notification -->
+    <div class="notification" id="notification">
+        Message sent successfully!
     </div>
 
     <script>
@@ -932,12 +1010,32 @@
             }
         };
 
-        // Modal elements
+        // DOM Elements
         const modalOverlay = document.getElementById('service-modal');
         const modalTitle = document.getElementById('modal-title');
         const modalDescription = document.getElementById('modal-description');
         const serviceOptions = document.getElementById('service-options');
         const closeModal = document.querySelector('.close-modal');
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+        const contactForm = document.getElementById('contact-form');
+        const notification = document.getElementById('notification');
+
+        // Mobile menu toggle
+        hamburger.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+            hamburger.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function() {
+                navLinks.classList.remove('active');
+                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
 
         // Open modal when service card is clicked
         document.querySelectorAll('.service-card').forEach(card => {
@@ -993,6 +1091,25 @@
             modalOverlay.classList.remove('active');
             document.body.style.overflow = 'auto';
         }
+
+        // Contact form submission
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // In a real application, you would send the form data to a server here
+            // For demonstration, we'll just show a success message
+            
+            // Show notification
+            notification.classList.add('show');
+            
+            // Reset form
+            contactForm.reset();
+            
+            // Hide notification after 3 seconds
+            setTimeout(function() {
+                notification.classList.remove('show');
+            }, 3000);
+        });
 
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
