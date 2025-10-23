@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Computers - Professional IT Solutions</title>
+     <link rel="icon" type="image/x-icon" href="Black_White_Minimalist_Professional_Initial_Logo-removebg-preview.png">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3.2.0/dist/email.min.js"></script>
+    
+    
+    <style>
+    
+        :root {
+            --deep-blue: #6A0DAD;
+            --deep-purple: #5a0a95;
+            --electric-purple: #8B48D7;
+            --royal-gold: #D4AF37;
+            --light-gold: #FFD700;
+            --dark-charcoal: #2D2D2D;
+            --light-gray: #f8f9fa;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-charcoal);
+            background-color: var(--white);
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--deep-blue), var(--deep-purple));
+            color: var(--white);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(106, 13, 173, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--royal-gold);
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            margin-left: 2rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--royal-gold);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--royal-gold);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(106, 13, 173, 0.8), rgba(90, 10, 149, 0.9)), url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0rem;
+            margin-top: 0px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--royal-gold);
+            color: var(--dark-charcoal);
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: var(--light-gold);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+        }
+
+        .btn:disabled {
+            background: #cccccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--deep-blue);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--royal-gold);
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .about-image {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(106, 13, 173, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .about-image:hover {
+            transform: scale(1.02);
+        }
+
+        /* Services Section */
+        .services {
+            background-color: var(--light-gray);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border-top: 4px solid var(--deep-blue);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(106, 13, 173, 0.2);
+        }
+
+        .service-card h3 {
+            color: var(--deep-blue);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .service-card h4 {
+            color: var(--dark-charcoal);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .service-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .service-card li {
+            padding: 0.3rem 0;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .service-card li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--royal-gold);
+            font-weight: bold;
+        }
+
+        /* Why Choose Us Section */
+        .why-choose-content {
+            background: linear-gradient(135deg, var(--deep-blue), var(--electric-purple));
+            color: var(--white);
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(106, 13, 173, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .why-choose-content::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+        }
+
+        .why-choose-content h3 {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            font-weight: 400;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: var(--light-gray);
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--deep-blue);
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e1e1e1;
+            border-radius: 5px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--deep-blue);
+        }
+
+        .form-group.error input,
+        .form-group.error textarea,
+        .form-group.error select {
+            border-color: #ff3860;
+        }
+
+        .error-message {
+            color: #ff3860;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+            display: none;
+        }
+
+        .form-group.error .error-message {
+            display: block;
+        }
+
+        .contact-info {
+            background: var(--deep-blue);
+            color: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            height: fit-content;
+            width: 500px;
+            align-items: center;
+        }
+
+        .contact-info h3 {
+            color: var(--royal-gold);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info p {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-info i {
+            margin-right: 10px;
+            color: var(--royal-gold);
+            width: 20px;
+            text-align: center;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-charcoal);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Success Message */
+        .success-message {
+            background: #23d160;
+            color: white;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-bottom: 1.5rem;
+            display: none;
+        }
+
+        .error-message-box {
+            background: #ff3860;
+            color: white;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-bottom: 1.5rem;
+            display: none;
+        }
+
+        /* Loading Spinner */
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: var(--dark-charcoal);
+            animation: spin 1s ease-in-out infinite;
+            margin-right: 10px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav {
+                margin-top: 1rem;
+                display: none;
+                width: 100%;
+            }
+
+            nav.active {
+                display: block;
+            }
+
+            nav a {
+                display: block;
+                margin: 1rem 0;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+                position: absolute;
+                right: 2rem;
+                top: 1rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .why-choose-content h3 {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">Digital Computers</div>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav id="main-nav">
+                <a href="#aboutus">About Us</a>
+                <a href="#myservices">Services</a>
+                <a href="#whychooseus">Why Choose Us</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Professional IT Solutions</h1>
+            <p>Your trusted partner for technology sales, repair, and installation services</p>
+            <a href="#contact" class="btn">Get Started Today</a>
+        </div>
+    </section>
+
+    <!-- About Us -->
+    <section id="aboutus">
+        <h2 class="section-title">About Us</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <h3>Digital Computers is your premier IT partner, offering end-to-end technology solutions. We specialize in sales of computers, cameras, and components, coupled with expert repair services for laptops and printers. From software installation to professional camera setup, we provide reliable, one-stop support for all your digital needs.</h3>
+            </div>
+            <img src="https://i.pinimg.com/1200x/43/26/3a/43263ae4bbab3b6728b60ac7257523b1.jpg" alt="IT Solutions" class="about-image">
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="myservices" class="services">
+        <h2 class="section-title">Our Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3><i class="fas fa-shopping-cart"></i> Product Sales</h3>
+                <h4>We supply genuine and high-quality technology products including:</h4>
+                <ul>
+                    <li>Computers & Laptops</li>
+                    <li>Printers & Cameras</li>
+                    <li>Components (Graphics Cards, Hard Disks)</li>
+                    <li>Accessories (Chargers, Headphones, Telephones)</li>
+                </ul>
+            </div>
+            <div class="service-card">
+                <h3><i class="fas fa-tools"></i> Repair & Maintenance</h3>
+                <h4>Fast and reliable repair services for your essential devices:</h4>
+                <ul>
+                    <li>Laptop & Desktop Computer Repair</li>
+                    <li>Printer Troubleshooting & Fixing</li>
+                    <li>Hardware Replacement & Upgrades</li>
+                </ul>
+            </div>
+            <div class="service-card">
+                <h3><i class="fas fa-laptop-code"></i> Software Solutions</h3>
+                <h4>We handle all your software needs to ensure optimal performance:</h4>
+                <ul>
+                    <li>Operating System (OS) Installation</li>
+                    <li>Software & Application Download & Setup</li>
+                    <li>Driver Installation & Virus Removal</li>
+                </ul>
+            </div>
+            <div class="service-card">
+                <h3><i class="fas fa-camera"></i> Professional Installation</h3>
+                <h4>Expert setup and configuration services:</h4>
+                <ul>
+                    <li>CCTV & Security Camera Installation</li>
+                    <li>System Configuration & Network Setup</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section id="whychooseus">
+        <h2 class="section-title">Why Choose Us?</h2>
+        <div class="why-choose-content">
+            <h3>At Digital Computers, we offer a distinctly personal and efficient alternative to the impersonal experience of large online marketplaces. We pride ourselves on building relationships with our customers, which is why we welcome friendly bargaining to ensure you receive not just a product, but the best possible value. Enjoy the convenience of our lightning-fast local delivery, which gets your orders to you within one to three days, backed by a straightforward and hassle-free return policy for your complete peace of mind. Furthermore, we specialize in creating custom-assembled computers tailored to your exact needs, offering unique configurations and specialized hardware that you often cannot find on standardized e-commerce platforms. Choose us for a smarter, faster, and more human-centered approach to all your technology needs.</h3>
+        </div>
+    </section>
+
+    <!-- Contact -->
+            </div>
+            <center>
+            <div class="contact-info">
+                <h3>Get In Touch</h3>
+                <p><i class="fas fa-map-marker-alt"></i> 123, City, State</p>
+                <p><i class="fas fa-phone"></i> +91 1234567890</p>
+                <p><i class="fas fa-envelope"></i> digitalcomp@gmail.com</p>
+                <p><i class="fas fa-clock"></i> Mon-Sat: 8AM-6PM</p>
+                </center>
+            </div>
+        </div>
+    </section>
+<h3>&nbsp;</h3>
+    <footer>
+        <p>&copy; 2007 Digital Computers. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Initialize EmailJS - REPLACE WITH YOUR ACTUAL IDs
+        emailjs.init("YOUR_PUBLIC_USER_ID");
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const mainNav = document.getElementById('main-nav');
+        
+        mobileMenuBtn.addEventListener('click', function() {
+            mainNav.classList.toggle('active');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                // Close mobile menu if open
+                mainNav.classList.remove('active');
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Form validation and submission handling
+        const contactForm = document.getElementById('contactForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const submitSpinner = document.getElementById('submitSpinner');
+        const successMessage = document.getElementById('successMessage');
+        const errorMessage = document.getElementById('errorMessage');
+        const errorText = document.getElementById('errorText');
+        
+        // Initially hide the spinner and messages
+        submitSpinner.style.display = 'none';
+        successMessage.style.display = 'none';
+        errorMessage.style.display = 'none';
+        
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Reset previous errors
+            resetErrors();
+            successMessage.style.display = 'none';
+            errorMessage.style.display = 'none';
+            
+            // Validate form
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const service = document.getElementById('service').value;
+            const message = document.getElementById('message').value.trim();
+            
+            let isValid = true;
+            
+            if (!name) {
+                showError('nameError', 'Please enter your name');
+                isValid = false;
+            }
+            
+            if (!email) {
+                showError('emailError', 'Please enter your email');
+                isValid = false;
+            } else if (!isValidEmail(email)) {
+                showError('emailError', 'Please enter a valid email address');
+                isValid = false;
+            }
+            
+            if (!message) {
+                showError('messageError', 'Please enter your message');
+                isValid = false;
+            }
+            
+            if (isValid) {
+                // Show loading state
+                submitBtn.disabled = true;
+                submitSpinner.style.display = 'inline-block';
+                submitBtn.innerHTML = '<span class="spinner" id="submitSpinner"></span> Sending...';
+                
+                // Prepare email parameters
+                const templateParams = {
+                    to_email: "digitalcomp@gmail.com",
+                    from_name: name,
+                    from_email: email,
+                    phone: phone,
+                    service: service,
+                    message: message
+                };
+
+                // Send email using EmailJS
+                emailjs.send('service_hkj5ca9', 'template_vn7mpnk', templateParams)
+                    .then(function(response) {
+                        console.log('SUCCESS!', response.status, response.text);
+                        
+                        // Hide loading state
+                        submitBtn.disabled = false;
+                        submitSpinner.style.display = 'none';
+                        submitBtn.innerHTML = 'Send Message';
+                        
+                        // Show success message
+                        successMessage.style.display = 'block';
+                        
+                        // Reset form
+                        contactForm.reset();
+                        
+                        // Scroll to success message
+                        successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }, function(error) {
+                        console.log('FAILED...', error);
+                        
+                        // Hide loading state
+                        submitBtn.disabled = false;
+                        submitSpinner.style.display = 'none';
+                        submitBtn.innerHTML = 'Send Message';
+                        
+                        // Show error message
+                        errorText.textContent = 'There was an error sending your message. Please try again or contact us directly at irshad136@gmail.com';
+                        errorMessage.style.display = 'block';
+                        
+                        // Scroll to error message
+                        errorMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    });
+            }
+        });
+        
+        function showError(errorId, message) {
+            const errorElement = document.getElementById(errorId);
+            errorElement.textContent = message;
+            errorElement.parentElement.classList.add('error');
+        }
+        
+        function resetErrors() {
+            const errorElements = document.querySelectorAll('.error-message');
+            errorElements.forEach(element => {
+                element.textContent = '';
+                element.parentElement.classList.remove('error');
+            });
+        }
+        
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        // Header background on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'var(--deep-blue)';
+                header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.2)';
+            } else {
+                header.style.background = 'linear-gradient(135deg, var(--deep-blue), var(--deep-purple))';
+                header.style.boxShadow = '0 2px 10px rgba(106, 13, 173, 0.3)';
+            }
+        });
+    </script>
+</body>
+</html>
