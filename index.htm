@@ -187,6 +187,18 @@
             box-shadow: 0 8px 20px rgba(108, 99, 255, 0.4);
         }
 
+        .btn-secondary {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            box-shadow: none;
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
         /* Skills Section */
         .skills {
             padding: 100px 0;
@@ -375,6 +387,80 @@
             margin-bottom: 15px;
         }
 
+        .work-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .tech-tag {
+            background-color: var(--light);
+            color: var(--primary);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* Hire Me Section */
+        .hire-me {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            text-align: center;
+        }
+
+        .hire-me .section-title h2 {
+            color: white;
+        }
+
+        .hire-me .section-title h2::after {
+            background-color: white;
+        }
+
+        .hire-me p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            opacity: 0.9;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .process-step {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background-color: white;
+            color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 20px;
+        }
+
+        .hire-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
         /* Contact Section */
         .contact {
             padding: 100px 0;
@@ -468,7 +554,8 @@
         }
 
         .form-group input,
-        .form-group textarea {
+        .form-group textarea,
+        .form-group select {
             width: 100%;
             padding: 12px 15px;
             border: 1px solid #ddd;
@@ -478,7 +565,8 @@
         }
 
         .form-group input:focus,
-        .form-group textarea:focus {
+        .form-group textarea:focus,
+        .form-group select:focus {
             border-color: var(--primary);
             outline: none;
             box-shadow: 0 0 0 2px rgba(108, 99, 255, 0.2);
@@ -695,6 +783,16 @@
             .service-options {
                 flex-direction: column;
             }
+
+            .hire-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hire-buttons .btn {
+                width: 100%;
+                max-width: 300px;
+            }
         }
     </style>
 </head>
@@ -712,6 +810,7 @@
                     <li><a href="#skills">Skills</a></li>
                     <li><a href="#services">Services</a></li>
                     <li><a href="#work">My Work</a></li>
+                    <li><a href="#hire">Hire Me</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
@@ -722,8 +821,9 @@
     <section class="hero" id="home">
         <div class="container">
             <h1>Hi, I'm <span>Hamza</span> <br>Web Designer</h1>
-            <p>I make beautiful and fast websites for small businesses.</p>
-            <a href="#work" class="btn">View My Work</a>
+            <p>I'm a passionate front-end developer who creates beautiful, responsive websites that help businesses grow online.</p>
+            <a href="#hire" class="btn">Hire Me</a>
+            <a href="#work" class="btn btn-secondary">View My Work</a>
         </div>
     </section>
 
@@ -805,7 +905,12 @@
                     </div>
                     <div class="work-content">
                         <h3>Local Shop Website</h3>
-                        <p>A vibrant one-page website for a local shop (bakery/juice shop) with an attractive menu display.</p>
+                        <div class="work-tech">
+                            <span class="tech-tag">HTML</span>
+                            <span class="tech-tag">CSS</span>
+                            <span class="tech-tag">JavaScript</span>
+                        </div>
+                        <p>A vibrant one-page website for a local shop with attractive menu display and contact information.</p>
                         <a href="shop-Website.html" target="_blank" class="btn">View Website</a>
                     </div>
                 </div>
@@ -815,7 +920,12 @@
                     </div>
                     <div class="work-content">
                         <h3>E-commerce Website</h3>
-                        <p>A complete e-commerce solution with product listings, shopping cart, and secure checkout.</p>
+                        <div class="work-tech">
+                            <span class="tech-tag">HTML</span>
+                            <span class="tech-tag">CSS</span>
+                            <span class="tech-tag">JavaScript</span>
+                        </div>
+                        <p>Complete e-commerce solution with product listings, shopping cart, and secure checkout functionality.</p>
                         <a href="ecommerce-Website.html" target="_blank" class="btn">View Website</a>
                     </div>
                 </div>
@@ -825,10 +935,53 @@
                     </div>
                     <div class="work-content">
                         <h3>Tech Computers Website</h3>
-                        <p>A vibrant Website for a IT Solutions purpose</p>
+                        <div class="work-tech">
+                            <span class="tech-tag">HTML</span>
+                            <span class="tech-tag">CSS</span>
+                            <span class="tech-tag">Responsive</span>
+                        </div>
+                        <p>A vibrant website for IT solutions with service showcase and contact features.</p>
                         <a href="computer_website.htm" target="_blank" class="btn">View Website</a>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hire Me Section -->
+    <section class="hire-me" id="hire">
+        <div class="container">
+            <div class="section-title">
+                <h2>Ready to Work With Me?</h2>
+            </div>
+            <p>I'm available for freelance projects and would love to help bring your ideas to life. Here's how we can work together:</p>
+            
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3>Discuss Your Project</h3>
+                    <p>Tell me about your website needs and goals</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h3>Get a Quote</h3>
+                    <p>I'll provide a fair price and timeline</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h3>Design & Develop</h3>
+                    <p>I'll create your website with regular updates</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h3>Launch & Support</h3>
+                    <p>Your website goes live with basic support</p>
+                </div>
+            </div>
+
+            <div class="hire-buttons">
+                <a href="#contact" class="btn" style="background-color: white; color: var(--primary);">Get Free Quote</a>
+                <a href="#work" class="btn btn-secondary" style="border-color: white; color: white;">See My Work</a>
             </div>
         </div>
     </section>
@@ -842,7 +995,7 @@
             <div class="contact-container">
                 <div class="contact-info">
                     <h3>Let's Work Together</h3>
-                    <p>I'm available for freelance work. Get in touch with me and let's discuss your project.</p>
+                    <p>I'm available for freelance work. Get in touch with me and let's discuss your project. I usually respond within a few hours.</p>
                     <div class="contact-details">
                         <div class="contact-item">
                             <i class="fas fa-envelope"></i>
@@ -854,24 +1007,36 @@
                         </div>
                     </div>
                     <div class="social-links">
-                        <a href="https://www.instagram.com/hamza.coder/"><i class="fab fa-instagram"></i></a>
-                        <a href="https://www.linkedin.com/in/hamza-ali-59664538a/"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="https://github.com/Hamzacoder12"><i class="fab fa-github"></i></a>
+                        <a href="https://www.instagram.com/hamza.coder/" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/in/hamza-ali-59664538a/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://github.com/Hamzacoder12" target="_blank"><i class="fab fa-github"></i></a>
                     </div>
                 </div>
                 <div class="contact-form">
-                    <form id="contact-form">
+                    <!-- CORRECTED FORMSPREE FORM -->
+                    <form action="https://formspree.io/f/movpoyzy" method="POST" id="contact-form">
                         <div class="form-group">
                             <label for="name">Your Name</label>
-                            <input type="text" id="name" placeholder="John Doe" required>
+                            <input type="text" id="name" name="name" placeholder="John Doe" required>
                         </div>
                         <div class="form-group">
                             <label for="email">Your Email</label>
-                            <input type="email" id="email" placeholder="john@example.com" required>
+                            <input type="email" id="email" name="email" placeholder="john@example.com" required>
                         </div>
                         <div class="form-group">
-                            <label for="message">Your Message</label>
-                            <textarea id="message" rows="5" placeholder="Tell me about your project..." required></textarea>
+                            <label for="service">Service Needed</label>
+                            <select id="service" name="service" required>
+                                <option value="">Select a service</option>
+                                <option value="school">School/College Project</option>
+                                <option value="business">Business Website</option>
+                                <option value="portfolio">Portfolio Website</option>
+                                <option value="fixes">HTML/CSS Fixes</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Project Details</label>
+                            <textarea id="message" name="message" rows="5" placeholder="Tell me about your project, timeline, and budget..." required></textarea>
                         </div>
                         <button type="submit" class="btn">Send Message</button>
                     </form>
@@ -1058,86 +1223,4 @@
             serviceOptions.innerHTML = '';
             
             // Add new options
-            service.options.forEach(option => {
-                const optionElement = document.createElement('div');
-                optionElement.className = 'service-option';
-                
-                optionElement.innerHTML = `
-                    <h3>${option.name}</h3>
-                    <div class="price">${option.price}</div>
-                    <div class="delivery-time">Delivery: ${option.delivery}</div>
-                    <ul class="features">
-                        ${option.features.map(feature => `<li>${feature}</li>`).join('')}
-                    </ul>
-                `;
-                
-                serviceOptions.appendChild(optionElement);
-            });
-            
-            // Show modal
-            modalOverlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        // Close modal
-        closeModal.addEventListener('click', closeServiceModal);
-        modalOverlay.addEventListener('click', function(e) {
-            if (e.target === modalOverlay) {
-                closeServiceModal();
-            }
-        });
-
-        function closeServiceModal() {
-            modalOverlay.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-
-        // Contact form submission
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // In a real application, you would send the form data to a server here
-            // For demonstration, we'll just show a success message
-            
-            // Show notification
-            notification.classList.add('show');
-            
-            // Reset form
-            contactForm.reset();
-            
-            // Hide notification after 3 seconds
-            setTimeout(function() {
-                notification.classList.remove('show');
-            }, 3000);
-        });
-
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if(targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if(targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-
-        // Add scroll effect to header
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
-            } else {
-                header.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.1)';
-            }
-        });
-    </script>
-</body>
-</html>
+            service
